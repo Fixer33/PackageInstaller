@@ -3,9 +3,12 @@ using UnityEngine.UIElements;
 
 namespace PackageInstaller.Editor
 {
+    /// <summary>
+    /// Represents package element in the list
+    /// </summary>
     internal class PackageElement : VisualElement
     {
-        private PackageRecord _record;
+        private readonly PackageRecord _record;
 
         internal PackageElement(PackageRecord record, bool isInstalled, Action<PackageRecord> installClicked)
         {

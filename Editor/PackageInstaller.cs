@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace PackageInstaller.Editor
 {
+    /// <summary>
+    /// API for working with the Package Manager
+    /// </summary>
     internal static class PackageInstaller
     {
         private static readonly PackageRecordArray _recordArray;
@@ -22,11 +25,13 @@ namespace PackageInstaller.Editor
             
             _recordArray = JsonUtility.FromJson<PackageRecordArray>(file.text);
         }
-        
+
+        #region Package listing
+
         private static ListRequest _listRequest;
         private static Action<List<string>> _listRequestCallback;
 
-        public static bool RefreshInstalledPackages(Action<List<string>> callback)
+        internal static bool RefreshInstalledPackages(Action<List<string>> callback)
         {
             if (_listRequest is { IsCompleted: false })
                 return false;
@@ -48,11 +53,15 @@ namespace PackageInstaller.Editor
             _listRequestCallback = null;
             _listRequest = null;
         }
-        
+
+        #endregion
+
+        #region Package adding
+
         private static AddRequest _addRequest;
         private static Action _addRequestCallback;
 
-        public static void InstallPackage(PackageRecord package, Action callback)
+        internal static void InstallPackage(PackageRecord package, Action callback)
         {
             if (_addRequest is { IsCompleted: false })
                 return;
@@ -74,6 +83,8 @@ namespace PackageInstaller.Editor
             _addRequest = null;
         }
 
-        public static PackageRecord[] GetPackageRecords() => _recordArray.Records;
+        #endregion
+
+        internal static PackageRecord[] GetPackageRecords() => _recordArray.Records;
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace PackageInstaller.Editor
 {
-    public class PackageInstallerWindow : EditorWindow
+    internal class PackageInstallerWindow : EditorWindow
     {
         private const float LOADING_INDICATOR_ROTATION_STEP = 30;
         
@@ -65,23 +65,6 @@ namespace PackageInstaller.Editor
             RefreshList();
         }
 
-        private void RefreshList()
-        {
-            CancellationTokenSource cancellationToken = AnimateLoading();
-
-            if (PackageInstaller.RefreshInstalledPackages(installedPackages =>
-                {
-                    cancellationToken.Cancel();
-                    rootVisualElement.Remove(_loadingIndicatorPivot);
-                    foreach (var packageRecord in PackageInstaller.GetPackageRecords())
-                    {
-                        _scrollView.contentContainer.Add(new PackageElement(packageRecord,
-                            installedPackages.Any(i => i.Contains(packageRecord.PackageId)), InstallPackageClicked));
-                    }
-                }) == false)
-                cancellationToken.Cancel();
-        }
-
         private CancellationTokenSource AnimateLoading()
         {
             _scrollView.contentContainer.Clear();
@@ -99,6 +82,23 @@ namespace PackageInstaller.Editor
             }, cancellationToken.Token);
 
             return cancellationToken;
+        }
+
+        private void RefreshList()
+        {
+            CancellationTokenSource cancellationToken = AnimateLoading();
+
+            if (PackageInstaller.RefreshInstalledPackages(installedPackages =>
+                {
+                    cancellationToken.Cancel();
+                    rootVisualElement.Remove(_loadingIndicatorPivot);
+                    foreach (var packageRecord in PackageInstaller.GetPackageRecords())
+                    {
+                        _scrollView.contentContainer.Add(new PackageElement(packageRecord,
+                            installedPackages.Any(i => i.Contains(packageRecord.PackageId)), InstallPackageClicked));
+                    }
+                }) == false)
+                cancellationToken.Cancel();
         }
 
         private void InstallPackageClicked(PackageRecord packageRecord)
