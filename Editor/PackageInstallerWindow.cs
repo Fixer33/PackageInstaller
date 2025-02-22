@@ -11,11 +11,11 @@ namespace PackageInstaller.Editor
     {
         private const float LOADING_INDICATOR_ROTATION_STEP = 30;
         
-        [MenuItem("Tools/Fixer33/Package installer", priority = 0)]
+        [MenuItem("Tools/Fixer33/Package Installer", priority = 0)]
         private static void ShowWindow()
         {
             var window = GetWindow<PackageInstallerWindow>();
-            window.titleContent = new GUIContent("Package installer");
+            window.titleContent = new GUIContent("Package Installer");
             window.Show();
         }
 
