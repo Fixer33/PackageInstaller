@@ -1,0 +1,12 @@
+{
+  "name": "com.fixer33.package-installer",
+  "version": "1.0.0",
+  "displayName": "Package Installer",
+  "description": "Package for easy install of other custom unity packages that are located on GitHub",
+  "unity": "6000.0",
+  "author": {
+    "name": "Fixer33",
+    "email": "fsfixer33@gmail.com",
+    "url": "https://github.com/Fixer33"
+  }
+}

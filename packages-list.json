@@ -1,0 +1,14 @@
+{
+  "Records": [
+    {
+      "PackageName": "Observable Variables",
+      "PackageId": "com.fixer33.observable-variables",
+      "PackageUrl": "https://github.com/Fixer33/ObservableVariablesPackage.git"
+    },
+    {
+      "PackageName": "Easy Events",
+      "PackageId": "com.fixer33.easy-events",
+      "PackageUrl": "https://github.com/Fixer33/EasyEventsPackage.git"
+    }
+  ]
+}
