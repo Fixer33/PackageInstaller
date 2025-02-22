@@ -1,3 +1,29 @@
+Label {
+    color: white;
+    font-size: 16px;
+}
+
+#header {
+    -unity-text-align: middle-center;
+    font-size: 24px;
+    border-bottom-color: white;
+    border-bottom-width: 3px;
+    margin-bottom: 5px;
+}
+
+PackageElement {
+    border-width: 1px;
+    border-color: white;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    flex-direction: row;
+    height: 30px;
+}
+
+PackageElement:hover {
+    background-color: rgba(255,255,255,0.03);
+}
+
 #loading-indicator {
     -unity-background-scale-mode: scale-to-fit;
     height: 100px;
@@ -8,4 +34,37 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+}
+
+PackageElement Label {
+    -unity-text-align: middle-left;
+}
+
+PackageElement #package-element__install-btn {
+    width: 100px;
+    margin: 3px;
+    border-color: white;
+    border-radius: 3px;
+    border-width: 1px;
+    background-color: rgba(255,255,255,0);
+    font-size: 16px;
+}
+
+PackageElement #package-element__install-btn:hover {
+    background-color: rgba(255,255,255,.1);
+    color: white;
+}
+
+PackageElement #package-element__install-btn:active {
+    scale: 0.9 0.9;
+}
+
+PackageElement #package-element__name-text {
+    flex-grow: 1;
+    margin-left: 5px;
+}
+
+PackageElement #package-element__installed-text {
+    color: greenyellow;
+    margin-right: 3px;
 }
