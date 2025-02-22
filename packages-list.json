@@ -9,6 +9,11 @@
       "PackageName": "Easy Events",
       "PackageId": "com.fixer33.easy-events",
       "PackageUrl": "https://github.com/Fixer33/EasyEventsPackage.git"
+    },
+    {
+      "PackageName": "Item Combining",
+      "PackageId": "com.fixer33.item-combining",
+      "PackageUrl": "https://github.com/Fixer33/ItemCombiningPackage.git"
     }
   ]
 }
