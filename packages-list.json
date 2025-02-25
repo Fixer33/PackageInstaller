@@ -1,6 +1,16 @@
 {
   "Records": [
     {
+      "PackageName": "Core",
+      "PackageId": "com.fixer33.core",
+      "PackageUrl": "https://github.com/Fixer33/PackageCore.git"
+    },
+    {
+      "PackageName": "Extenject",
+      "PackageId": "com.fixer33.extenject-fork",
+      "PackageUrl": "https://github.com/Fixer33/ZenjectPackage.git"
+    },
+    {
       "PackageName": "Observable Variables",
       "PackageId": "com.fixer33.observable-variables",
       "PackageUrl": "https://github.com/Fixer33/ObservableVariablesPackage.git"
