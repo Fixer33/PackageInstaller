@@ -6,6 +6,11 @@
       "PackageUrl": "https://github.com/Fixer33/PackageCore.git"
     },
     {
+      "PackageName": "UI Core",
+      "PackageId": "com.fixer33.ui-core",
+      "PackageUrl": "https://github.com/Fixer33/UI-Core.git"
+    },
+    {
       "PackageName": "Extenject",
       "PackageId": "com.fixer33.extenject-fork",
       "PackageUrl": "https://github.com/Fixer33/ZenjectPackage.git"
