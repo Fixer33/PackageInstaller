@@ -8,18 +8,25 @@ namespace PackageInstaller.Editor
     /// </summary>
     internal class PackageElement : VisualElement
     {
-        private readonly PackageRecord _record;
+        private const string IS_DEPENDENCY_CLASS_NAME = "dependencyPackage";
+        private const string TO_BE_INSTALLED_CLASS_NAME = "toBeInstalled";
+        
+        public PackageRecord Record => _record;
 
-        internal PackageElement(PackageRecord record, bool isInstalled, Action<PackageRecord> installClicked)
+        private readonly PackageRecord _record;
+        private Action<PackageRecord, bool> _selectedStateChange;
+
+        internal PackageElement(PackageRecord record, bool isInstalled, Action<PackageRecord, bool> selectedStateChange)
         {
             _record = record;
+            _selectedStateChange = selectedStateChange;
 
             this.Add(new Label()
             {
                 name = "package-element__name-text",
                 text = record.PackageName
             });
-
+            
             if (isInstalled)
             {
                 this.Add(new Label()
@@ -30,16 +37,41 @@ namespace PackageInstaller.Editor
             }
             else
             {
-                Button btn = new Button()
+                Toggle selectionToggle = new Toggle()
                 {
-                    name = "package-element__install-btn",
-                    text = "Install"
+                    name = "package-element__selection-toggle",
                 };
-                btn.clicked += () =>
-                {
-                    installClicked?.Invoke(record);
-                };
-                this.Add(btn);
+                this.Add(selectionToggle);
+                selectionToggle.RegisterValueChangedCallback(OnSelectionValueChanged);
+            }
+        }
+
+        private void OnSelectionValueChanged(ChangeEvent<bool> evt)
+        {
+            _selectedStateChange?.Invoke(_record, evt.newValue);
+        }
+
+        public void HighlightAsDependency(bool isHighlighted)
+        {
+            if (isHighlighted)
+            {
+                this.AddToClassList(IS_DEPENDENCY_CLASS_NAME);
+            }
+            else
+            {
+                this.RemoveFromClassList(IS_DEPENDENCY_CLASS_NAME);
+            }
+        }
+        
+        public void HighlightAsToBeInstalled(bool isHighlighted)
+        {
+            if (isHighlighted)
+            {
+                this.AddToClassList(TO_BE_INSTALLED_CLASS_NAME);
+            }
+            else
+            {
+                this.RemoveFromClassList(TO_BE_INSTALLED_CLASS_NAME);
             }
         }
     }

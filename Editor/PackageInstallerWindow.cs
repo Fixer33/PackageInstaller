@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,9 +20,12 @@ namespace PackageInstaller.Editor
             window.Show();
         }
 
+        private readonly List<PackageRecord> _packagesToInstall = new();
+        private readonly List<PackageElement> _packageElements = new();
         private ScrollView _scrollView;
         private VisualElement _loadingIndicator;
         private VisualElement _loadingIndicatorPivot;
+        private Button _installBtn;
 
         private void CreateGUI()
         {
@@ -46,6 +50,14 @@ namespace PackageInstaller.Editor
                 name = "container"
             });
 
+            rootVisualElement.Add(_installBtn = new Button()
+            {
+                name = "install-btn",
+                text = "Install"
+            });
+            _installBtn.clicked += OnInstallPress;
+            _installBtn.SetEnabled(false);
+            
             string loadingIndicator = "Packages/com.fixer33.package-installer/Editor/Textures/ic_loading.png";
 #if PACKAGES_DEV
             loadingIndicator = "Assets/" + loadingIndicator;            
@@ -92,20 +104,54 @@ namespace PackageInstaller.Editor
                 {
                     cancellationToken.Cancel();
                     rootVisualElement.Remove(_loadingIndicatorPivot);
-                    foreach (var packageRecord in PackageInstaller.GetPackageRecords())
+                    List<PackageElement> elements = new();
+                    foreach (var packageGroupRecord in PackageInstaller.GetPackageGroupRecords())
                     {
-                        _scrollView.contentContainer.Add(new PackageElement(packageRecord,
-                            installedPackages.Any(i => i.Contains(packageRecord.PackageId)), InstallPackageClicked));
+                        foreach (var packageRecord in packageGroupRecord.Records)
+                        {
+                            var packageElement = new PackageElement(packageRecord,
+                                installedPackages.Any(i => i.Contains(packageRecord.PackageId)), PackageSelectionChanged);
+                            elements.Add(packageElement);
+                            _packageElements.Add(packageElement);
+                        }
+                        _scrollView.contentContainer.Add(new PackageGroupElement(packageGroupRecord, elements.ToArray()));
+                        elements.Clear();
                     }
+                    
                 }) == false)
                 cancellationToken.Cancel();
         }
 
-        private void InstallPackageClicked(PackageRecord packageRecord)
+        private void PackageSelectionChanged(PackageRecord packageRecord, bool isSelected)
+        {
+            if (isSelected)
+            {
+                if (_packagesToInstall.Contains(packageRecord) == false)
+                    _packagesToInstall.Add(packageRecord);
+            }
+            else
+            {
+                if (_packagesToInstall.Contains(packageRecord))
+                    _packagesToInstall.Remove(packageRecord);
+            }
+
+            List<string> dependencies = PackageInstaller.GetPackagesWithDependencies(_packagesToInstall.ToArray());
+            
+            foreach (var packageElement in _packageElements)
+            {
+                packageElement.HighlightAsDependency(dependencies.Contains(packageElement.Record.PackageId));
+                packageElement.HighlightAsToBeInstalled(_packagesToInstall.Contains(packageElement.Record));
+            }
+            
+            _installBtn.SetEnabled(_packagesToInstall.Count > 0);
+        }
+
+        private void OnInstallPress()
         {
             var cancellationToken = AnimateLoading();
-            PackageInstaller.InstallPackage(packageRecord, () =>
+            PackageInstaller.InstallPackages(_packagesToInstall.ToArray(), () =>
             {
+                _packagesToInstall.Clear();
                 cancellationToken.Cancel();
                 RefreshList();
             });

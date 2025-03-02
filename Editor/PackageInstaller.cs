@@ -58,33 +58,99 @@ namespace PackageInstaller.Editor
 
         #region Package adding
 
-        private static AddRequest _addRequest;
+        private static AddAndRemoveRequest _activeAddRequest;
         private static Action _addRequestCallback;
 
-        internal static void InstallPackage(PackageRecord package, Action callback)
+        internal static void InstallPackages(PackageRecord[] packages, Action callback)
         {
-            if (_addRequest is { IsCompleted: false })
+            if (_activeAddRequest is { IsCompleted: false } )
                 return;
+
+            List<string> packagesToAdd = GetPackagesWithDependencies(packages);
+            foreach (var p in packagesToAdd)
+            {
+                Debug.Log(p);
+            }
             
             _addRequestCallback = callback;
-            _addRequest = Client.Add(package.PackageUrl);
+            _activeAddRequest = Client.AddAndRemove(packagesToAdd
+                .Select(i => GetPackageById(i).GetValueOrDefault(new PackageRecord(){PackageUrl = i}).PackageUrl).ToArray(), Array.Empty<string>());
             EditorApplication.update -= InstallPackageProgress;
             EditorApplication.update += InstallPackageProgress;
         }
 
         private static void InstallPackageProgress()
         {
-            if (_addRequest.IsCompleted == false)
+            if (_activeAddRequest is { IsCompleted: false })
                 return;
             
             EditorApplication.update -= InstallPackageProgress;
             _addRequestCallback?.Invoke();
             _addRequestCallback = null;
-            _addRequest = null;
+            _activeAddRequest = null;
         }
 
         #endregion
 
-        internal static PackageRecord[] GetPackageRecords() => _recordArray.Records;
+        internal static List<string> GetPackagesWithDependencies(PackageRecord[] packages)
+        {
+            List<PackageRecord> packageList = new(packages);
+            List<string> result = new();
+            bool hasNewDependencies = true;
+            int cycles = 0;
+            while (hasNewDependencies)
+            {
+                if (cycles++ >= 1000)
+                {
+                    throw new OverflowException("Dependency fetch cycle overloop! Aborting package install");
+                }
+
+                hasNewDependencies = false;
+                foreach (var packageRecord in packageList.ToArray())
+                {
+                    if (result.Contains(packageRecord.PackageId) == false)
+                        result.Add(packageRecord.PackageId);
+
+                    if (packageRecord.Dependencies is not { Length: > 0})
+                        continue;
+                        
+                    foreach (var packageDependency in packageRecord.Dependencies)
+                    {
+                        var packageById = GetPackageById(packageDependency);
+                        if (packageById.HasValue)
+                        {
+                            if (packageList.Contains(packageById.Value) == false)
+                            {
+                                hasNewDependencies = true;
+                                packageList.Add(packageById.Value);
+                            }
+                        }
+                        else
+                        {
+                            result.Add(packageDependency);
+                        }
+                    }
+                }
+            }
+
+            result.Reverse();
+            return result;
+        }
+
+        internal static PackageRecord? GetPackageById(string id)
+        {
+            foreach (var packageGroupRecord in _recordArray.Groups)
+            {
+                foreach (var packageRecord in packageGroupRecord.Records)
+                {
+                    if (packageRecord.PackageId == id)
+                        return packageRecord;
+                }
+            }
+
+            return null;
+        }
+        
+        internal static PackageGroupRecord[] GetPackageGroupRecords() => _recordArray.Groups;
     }
 }

@@ -1,34 +1,50 @@
 {
-  "Records": [
+  "Groups": [
     {
-      "PackageName": "Core",
-      "PackageId": "com.fixer33.core",
-      "PackageUrl": "https://github.com/Fixer33/PackageCore.git"
+      "Name": "Core",
+      "Records": [
+        {
+          "PackageName": "Core",
+          "PackageId": "com.fixer33.core",
+          "PackageUrl": "https://github.com/Fixer33/PackageCore.git",
+          "Dependencies": [
+            "com.fixer33.extenject-fork"
+          ]
+        },
+        {
+          "PackageName": "UI Core",
+          "PackageId": "com.fixer33.ui-core",
+          "PackageUrl": "https://github.com/Fixer33/UI-Core.git",
+          "Dependencies": [
+            "com.fixer33.core"
+          ]
+        },
+        {
+          "PackageName": "Extenject",
+          "PackageId": "com.fixer33.extenject-fork",
+          "PackageUrl": "https://github.com/Fixer33/ZenjectPackage.git"
+        }
+      ]
     },
     {
-      "PackageName": "UI Core",
-      "PackageId": "com.fixer33.ui-core",
-      "PackageUrl": "https://github.com/Fixer33/UI-Core.git"
-    },
-    {
-      "PackageName": "Extenject",
-      "PackageId": "com.fixer33.extenject-fork",
-      "PackageUrl": "https://github.com/Fixer33/ZenjectPackage.git"
-    },
-    {
-      "PackageName": "Observable Variables",
-      "PackageId": "com.fixer33.observable-variables",
-      "PackageUrl": "https://github.com/Fixer33/ObservableVariablesPackage.git"
-    },
-    {
-      "PackageName": "Easy Events",
-      "PackageId": "com.fixer33.easy-events",
-      "PackageUrl": "https://github.com/Fixer33/EasyEventsPackage.git"
-    },
-    {
-      "PackageName": "Item Combining",
-      "PackageId": "com.fixer33.item-combining",
-      "PackageUrl": "https://github.com/Fixer33/ItemCombiningPackage.git"
+      "Name": "Tools",
+      "Records": [
+        {
+          "PackageName": "Observable Variables",
+          "PackageId": "com.fixer33.observable-variables",
+          "PackageUrl": "https://github.com/Fixer33/ObservableVariablesPackage.git"
+        },
+        {
+          "PackageName": "Easy Events",
+          "PackageId": "com.fixer33.easy-events",
+          "PackageUrl": "https://github.com/Fixer33/EasyEventsPackage.git"
+        },
+        {
+          "PackageName": "Item Combining",
+          "PackageId": "com.fixer33.item-combining",
+          "PackageUrl": "https://github.com/Fixer33/ItemCombiningPackage.git"
+        }
+      ]
     }
   ]
 }

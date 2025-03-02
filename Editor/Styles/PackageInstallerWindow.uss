@@ -11,19 +11,6 @@ Label {
     margin-bottom: 5px;
 }
 
-PackageElement {
-    border-width: 1px;
-    border-color: white;
-    border-radius: 3px;
-    margin-bottom: 3px;
-    flex-direction: row;
-    height: 30px;
-}
-
-PackageElement:hover {
-    background-color: rgba(255,255,255,0.03);
-}
-
 #loading-indicator {
     -unity-background-scale-mode: scale-to-fit;
     height: 100px;
@@ -36,26 +23,56 @@ PackageElement:hover {
     align-items: center;
 }
 
+PackageGroupElement {
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: white;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+#package-group__name-text {
+    -unity-text-align: middle-center;
+    font-size: 20px;
+    border-color: white;
+    border-bottom-width: 1px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+PackageElement {
+    flex-direction: row;
+    height: 30px;
+    transition-duration: 0.1s;
+    transition-property: all;
+}
+
+PackageElement:hover {
+    background-color: rgba(255,255,255,0.03);
+}
+
 PackageElement Label {
     -unity-text-align: middle-left;
 }
 
-PackageElement #package-element__install-btn {
-    width: 100px;
-    margin: 3px;
-    border-color: white;
-    border-radius: 3px;
-    border-width: 1px;
-    background-color: rgba(255,255,255,0);
-    font-size: 16px;
+PackageElement.dependencyPackage {
+    background-color: rgba(255,245,0,0.28)
 }
 
-PackageElement #package-element__install-btn:hover {
-    background-color: rgba(255,255,255,.1);
+PackageElement.toBeInstalled {
+    background-color: rgba(147,255,0,0.28)
+}
+
+PackageElement #package-element__selection-toggle {
     color: white;
+    margin-right: 5px;
 }
 
-PackageElement #package-element__install-btn:active {
+PackageElement #package-element__selection-toggle:hover {
+}
+
+PackageElement #package-element__selection-toggle:active {
     scale: 0.9 0.9;
 }
 
@@ -67,4 +84,26 @@ PackageElement #package-element__name-text {
 PackageElement #package-element__installed-text {
     color: greenyellow;
     margin-right: 3px;
+}
+
+#install-btn {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 3px;
+    background-color: rgba(147,255,0,0);
+    margin: 0;
+    transition-duration: 0.3s;
+    transition-property: all;
+}
+
+#install-btn:hover {
+    background-color: rgba(255,255,255,0.04);
+}
+
+#install-btn:disabled {
+    border-color: rgba(255,255,255,0);
+    color: rgba(255,255,255,0);
 }
