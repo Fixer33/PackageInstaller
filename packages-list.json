@@ -45,6 +45,16 @@
           "PackageUrl": "https://github.com/Fixer33/ItemCombiningPackage.git"
         }
       ]
+    },
+    {
+      "Name": "Editor tools",
+      "Records": [
+        {
+          "PackageName": "Build Finish Notifier",
+          "PackageId": "com.fixer33.build-finish-notifier",
+          "PackageUrl": "https://github.com/Fixer33/BuildFinishNotifierPackage.git"
+        }
+      ]
     }
   ]
 }
