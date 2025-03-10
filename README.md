@@ -14,6 +14,15 @@ Package Installer is a Unity Editor tool designed to simplify the installation a
 - One-click installation for missing custom packages.
 - Used with **UPM (Unity Package Manager)**.
 
+## Available packages
+
+- [Easy events](https://github.com/Fixer33/EasyEventsPackage)
+- [Observable Variables](https://github.com/Fixer33/ObservableVariablesPackage)
+- [Item Combining](https://github.com/Fixer33/ItemCombiningPackage)
+
+
+- [Build Finish Notifier](https://github.com/Fixer33/BuildFinishNotifierPackage)
+
 ## Installation
 
 ### Using UPM (Unity Package Manager)
