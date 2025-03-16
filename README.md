@@ -19,6 +19,7 @@ Package Installer is a Unity Editor tool designed to simplify the installation a
 - [Easy events](https://github.com/Fixer33/EasyEventsPackage)
 - [Observable Variables](https://github.com/Fixer33/ObservableVariablesPackage)
 - [Item Combining](https://github.com/Fixer33/ItemCombiningPackage)
+- [Radial Menu](https://github.com/Fixer33/RadialMenuPackage.git)
 
 
 - [Build Finish Notifier](https://github.com/Fixer33/BuildFinishNotifierPackage)

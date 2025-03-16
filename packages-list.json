@@ -43,6 +43,11 @@
           "PackageName": "Item Combining",
           "PackageId": "com.fixer33.item-combining",
           "PackageUrl": "https://github.com/Fixer33/ItemCombiningPackage.git"
+        },
+        {
+          "PackageName": "Radial Menu",
+          "PackageId": "com.fixer33.radial-menu",
+          "PackageUrl": "https://github.com/Fixer33/RadialMenuPackage.git"
         }
       ]
     },
