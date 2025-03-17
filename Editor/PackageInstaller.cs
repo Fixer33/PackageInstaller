@@ -67,11 +67,6 @@ namespace PackageInstaller.Editor
                 return;
 
             List<string> packagesToAdd = GetPackagesWithDependencies(packages);
-            foreach (var p in packagesToAdd)
-            {
-                Debug.Log(p);
-            }
-            
             _addRequestCallback = callback;
             _activeAddRequest = Client.AddAndRemove(packagesToAdd
                 .Select(i => GetPackageById(i).GetValueOrDefault(new PackageRecord(){PackageUrl = i}).PackageUrl).ToArray(), Array.Empty<string>());
