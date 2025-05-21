@@ -23,6 +23,37 @@
           "PackageName": "Extenject",
           "PackageId": "com.fixer33.extenject-fork",
           "PackageUrl": "https://github.com/Fixer33/ZenjectPackage.git"
+        },
+        {
+          "PackageName": "UniTask",
+          "PackageId": "com.cysharp.unitask",
+          "PackageUrl": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+        }
+      ]
+    },
+    {
+      "Name": "NuGet packages",
+      "Records": [
+        {
+          "PackageName": "NuGetForUnity",
+          "PackageId": "com.github-glitchenzo.nugetforunity",
+          "PackageUrl": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity"
+        },
+        {
+          "PackageName": "ZLinq (Install ZLinq from NuGet first)",
+          "PackageId": "com.cysharp.zlinq",
+          "PackageUrl": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
+          "Dependencies": [
+            "com.github-glitchenzo.nugetforunity"
+          ]
+        },
+        {
+          "PackageName": "R3 (Install R3 from NuGet first)",
+          "PackageId": "com.cysharp.r3",
+          "PackageUrl": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
+          "Dependencies": [
+            "com.github-glitchenzo.nugetforunity"
+          ]
         }
       ]
     },
@@ -48,6 +79,11 @@
           "PackageName": "Radial Menu",
           "PackageId": "com.fixer33.radial-menu",
           "PackageUrl": "https://github.com/Fixer33/RadialMenuPackage.git"
+        },
+        {
+          "PackageName": "Utilities",
+          "PackageId": "com.fixer33.utilities",
+          "PackageUrl": "https://github.com/Fixer33/UtilitiesPackage.git"
         }
       ]
     },
