@@ -73,7 +73,10 @@
         {
           "PackageName": "Item Combining",
           "PackageId": "com.fixer33.item-combining",
-          "PackageUrl": "https://github.com/Fixer33/ItemCombiningPackage.git"
+          "PackageUrl": "https://github.com/Fixer33/ItemCombiningPackage.git",
+          "Dependencies": [
+            "com.fixer33.core"
+          ]
         },
         {
           "PackageName": "Radial Menu",
@@ -84,6 +87,11 @@
           "PackageName": "Utilities",
           "PackageId": "com.fixer33.utilities",
           "PackageUrl": "https://github.com/Fixer33/UtilitiesPackage.git"
+        },
+        {
+          "PackageName": "Orientation UI Elements",
+          "PackageId": "com.fixer33.orientation-ui-elements",
+          "PackageUrl": "https://github.com/Fixer33/Orientation-UI-Elements.git"
         }
       ]
     },
