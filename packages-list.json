@@ -42,7 +42,7 @@
         {
           "PackageName": "ZLinq (Install ZLinq from NuGet first)",
           "PackageId": "com.cysharp.zlinq",
-          "PackageUrl": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
+          "PackageUrl": "https://github.com/Cysharp/ZLinq.git?path=src/ZLinq.Unity/Assets/ZLinq.Unity",
           "Dependencies": [
             "com.github-glitchenzo.nugetforunity"
           ]
