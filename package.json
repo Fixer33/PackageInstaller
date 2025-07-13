@@ -1,6 +1,6 @@
 {
   "name": "com.fixer33.package-installer",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "displayName": "Package Installer",
   "description": "Package for easy install of other custom unity packages that are located on GitHub",
   "unity": "6000.0",

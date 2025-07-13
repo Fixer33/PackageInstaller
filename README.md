@@ -21,8 +21,16 @@ Package Installer is a Unity Editor tool designed to simplify the installation a
 - [Item Combining](https://github.com/Fixer33/ItemCombiningPackage)
 - [Radial Menu](https://github.com/Fixer33/RadialMenuPackage.git)
 
+### Nuget
+- [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity)
+- [ZLinq](https://github.com/Cysharp/ZLinq.git?path=src/ZLinq.Unity/Assets/ZLinq.Unity)
+- [R3](https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity)
 
+### Tools
 - [Build Finish Notifier](https://github.com/Fixer33/BuildFinishNotifierPackage)
+- [Utilities](https://github.com/Fixer33/UtilitiesPackage.git)
+- [Orientation UI Elements](https://github.com/Fixer33/Orientation-UI-Elements.git)
+- [Modular console](https://github.com/Fixer33/ModularConsolePackage.git)
 
 ## Installation
 

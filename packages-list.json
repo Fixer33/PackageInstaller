@@ -92,6 +92,11 @@
           "PackageName": "Orientation UI Elements",
           "PackageId": "com.fixer33.orientation-ui-elements",
           "PackageUrl": "https://github.com/Fixer33/Orientation-UI-Elements.git"
+        },
+        {
+          "PackageName": "Modular console",
+          "PackageId": "com.fixer33.modular-console",
+          "PackageUrl": "https://github.com/Fixer33/ModularConsolePackage.git"
         }
       ]
     },
