@@ -14,23 +14,27 @@ Package Installer is a Unity Editor tool designed to simplify the installation a
 - One-click installation for missing custom packages.
 - Used with **UPM (Unity Package Manager)**.
 
-## Available packages
+### Core
+- [Core](https://github.com/Fixer33/PackageCore)
+- [UI Core](https://github.com/Fixer33/UI-Core)
+- [Extenject](https://github.com/Fixer33/ZenjectPackage)
+- [UniTask](https://github.com/Cysharp/UniTask)
 
+### Tools
 - [Easy events](https://github.com/Fixer33/EasyEventsPackage)
 - [Observable Variables](https://github.com/Fixer33/ObservableVariablesPackage)
 - [Item Combining](https://github.com/Fixer33/ItemCombiningPackage)
 - [Radial Menu](https://github.com/Fixer33/RadialMenuPackage.git)
+- [Build Finish Notifier](https://github.com/Fixer33/BuildFinishNotifierPackage)
+- [Utilities](https://github.com/Fixer33/UtilitiesPackage.git)
+- [Orientation UI Elements](https://github.com/Fixer33/Orientation-UI-Elements.git)
+- [Modular console](https://github.com/Fixer33/ModularConsolePackage.git)
+- [Unity Utility Library (gitamend)](https://github.com/adammyhre/Unity-Utils.git)
 
 ### Nuget
 - [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity)
 - [ZLinq](https://github.com/Cysharp/ZLinq.git?path=src/ZLinq.Unity/Assets/ZLinq.Unity)
 - [R3](https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity)
-
-### Tools
-- [Build Finish Notifier](https://github.com/Fixer33/BuildFinishNotifierPackage)
-- [Utilities](https://github.com/Fixer33/UtilitiesPackage.git)
-- [Orientation UI Elements](https://github.com/Fixer33/Orientation-UI-Elements.git)
-- [Modular console](https://github.com/Fixer33/ModularConsolePackage.git)
 
 ## Installation
 
