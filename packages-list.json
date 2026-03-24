@@ -97,6 +97,11 @@
           "PackageName": "Modular console",
           "PackageId": "com.fixer33.modular-console",
           "PackageUrl": "https://github.com/Fixer33/ModularConsolePackage.git"
+        },
+        {
+          "PackageName": "Unity Utility Library (gitamend)",
+          "PackageId": "com.gitamend.unityutils",
+          "PackageUrl": "https://github.com/adammyhre/Unity-Utils.git"
         }
       ]
     },
